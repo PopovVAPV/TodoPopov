@@ -24,6 +24,7 @@ namespace TodoPopov
     {
         private SqlConnection connection;
         private string id;
+        private string idRasdel;
 
         public MainWindow(SqlConnection connection, string id)
         {
@@ -105,7 +106,7 @@ namespace TodoPopov
             but.Click += Button_Click3;
             Stac.Children.Add(but);
             string sq = ((TextBlock)((Grid)ListBox.SelectedItem).Children[1]).Text;
-            SqlCommand cmd = new SqlCommand($"select decription from Cases where id=(select id from Chapter where title ='{sq}');", connection);
+            SqlCommand cmd = new SqlCommand($"select decription, status from Cases where id=(select id from Chapter where title ='{sq}');", connection);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -113,15 +114,28 @@ namespace TodoPopov
                 CheckBox checkBox = new CheckBox();
                 checkBox.Content = reader[0];
                 checkBox.FontSize = 15;
+                string a = reader[1].ToString();
+                checkBox.IsChecked = (a == "True");
                 Stac.Children.Add(checkBox);
             }
+            reader.Close();
+
+            cmd = new SqlCommand($"select id from Chapter where title ='{sq}';", connection);
+            reader = cmd.ExecuteReader();
+            reader.Read();
+            idRasdel = reader[0].ToString();
             reader.Close();
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
-            AddDelo delo = new AddDelo();
+            Delo del = new Delo();
+            AddDelo delo = new AddDelo(del);
             delo.ShowDialog();
+            
+            Stac.Children.Add(new CheckBox() { Content = del.Name});
+            SqlCommand sqlCommand = new SqlCommand($"insert into Cases values ({idRasdel},'{del.Name}',0);", connection);
+            sqlCommand.ExecuteNonQuery();
         }
     }
 }

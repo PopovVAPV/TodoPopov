@@ -67,6 +67,7 @@
     <Compile Include="AddDelo.xaml.cs">
       <DependentUpon>AddDelo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Delo.cs" />
     <Compile Include="Entrance.xaml.cs">
       <DependentUpon>Entrance.xaml</DependentUpon>
     </Compile>

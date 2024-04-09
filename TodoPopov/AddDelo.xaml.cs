@@ -19,14 +19,17 @@ namespace TodoPopov
     /// </summary>
     public partial class AddDelo : Window
     {
-        public AddDelo()
+        Delo delo;
+        public AddDelo(Delo delo)
         {
             InitializeComponent();
+            this.delo = delo;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            delo.Name = AddDe.Text;
+            this.Close();
         }
     }
 }
