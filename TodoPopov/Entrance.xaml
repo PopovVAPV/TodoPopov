@@ -1,0 +1,24 @@
+﻿<Window x:Class="TodoPopov.Entrance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoPopov"
+        mc:Ignorable="d"
+        Title="Entrance" Height="250" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Height="20" Width="150" Text="Логин"></TextBlock>
+            <TextBox Height="20" Width="150"  x:Name="Login"></TextBox>
+            <TextBlock Height="20" Width="150" Text="Пароль"></TextBlock>
+            <TextBox Height="20" Width="150" x:Name="Password"></TextBox>
+        </StackPanel>
+
+        <Button Grid.Row="1" Height="20" Width="150" Content="Войти" Click="Button_Click"></Button>
+    </Grid>
+</Window>

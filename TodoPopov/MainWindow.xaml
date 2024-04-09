@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TodoPopov"
         mc:Ignorable="d"
         Title="To-Do" Height="450" Width="800">
-    <Grid>
+    
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="13*"/>
@@ -19,29 +20,30 @@
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
 
-            <Border Background="#FF195419">
+            <Border Background="White">
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="C:\Users\admin\source\repos\TodoPopov\TodoPopov\images\icons\1.png"></Image>
-                    <TextBlock Text="Name" FontSize="24" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Margin="5"></TextBlock>
+                    <Image Margin="5" Source="C:\Users\admin\source\repos\TodoPopov\TodoPopov\images\icons\1.png"></Image>
+                    <TextBlock Text="Text" FontSize="24" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="5" Name="NickName"></TextBlock>
                 </Grid>
             </Border>
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                <ListBox x:Name="ListBox">
+                <ListBox x:Name="ListBox" SelectionChanged="ListBox_SelectionChanged">
+                    <Button Height="20" Width="100" BorderBrush="White" Background="White" Content="+ Новый раздел" Click="Button_Click"></Button>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="C:\Users\admin\source\repos\TodoPopov\TodoPopov\images\icons\2.png" Width="30" Height="30"></Image>
-                        <TextBlock Text="Name" FontSize="16" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="5"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="Мир" FontSize="12" VerticalAlignment="Bottom" Foreground="Black" Margin="5"></TextBlock>
                         
                     </Grid>
-                    <TextBlock Text="Добавить" FontSize="12" VerticalAlignment="Bottom" Foreground="Black" Margin="5"></TextBlock>
+                    
                 </ListBox>
                 
             </ScrollViewer>
@@ -53,18 +55,22 @@
                 <RowDefinition/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <Image Source="C:\Users\admin\source\repos\TodoPopov\TodoPopov\images\image\1.jpg" Grid.Row="0"></Image>
+            <Image Source="C:\Users\admin\source\repos\TodoPopov\TodoPopov\images\image\1.jpg" Stretch="Fill"></Image>
             <TextBlock Text="My chapter" FontSize="48" VerticalAlignment="Bottom"  Grid.Column="1" Foreground="White" Margin="5"></TextBlock>
 
             <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
-                <StackPanel>
+                <StackPanel x:Name="Stac">
+                    
                     <CheckBox Content="Дело 1" FontSize="15"/>
                     <CheckBox Content="Дело 2" FontSize="15"/>
                     <CheckBox Content="Дело 3" FontSize="15"/>
+                    
                 </StackPanel>
+                
             </ScrollViewer>
             
         </Grid>
 
     </Grid>
+    
 </Window>
